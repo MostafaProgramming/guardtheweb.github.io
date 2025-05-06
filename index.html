@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuardTheWeb - Unified Security Suite</title>
+  <!-- Tailwind & AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Hacker-font Monospace -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Share Tech Mono', monospace; background: #000; color: #eee; overflow-x: hidden; }
+    /* Matrix Canvas */
+    canvas#matrix { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+    /* Glass Panels */
+    .glass { backdrop-filter: blur(8px) saturate(150%); background: rgba(0,0,0,0.4); border: 1px solid rgba(0,216,255,0.2); }
+    /* Glow Titles */
+    .glow { animation: glow 1.5s ease-in-out infinite alternate; }
+    @keyframes glow {
+      from { text-shadow:0 0 8px #00d8ff,0 0 16px #00d8ff; }
+      to   { text-shadow:0 0 16px #ff3fa5,0 0 32px #ff3fa5; }
+    }
+    /* Typewriter Cursor */
+    .typewriter > .text { display:inline-block; border-right:2px solid #00d8ff; }
+  </style>
+</head>
+<body class="antialiased">
+  <canvas id="matrix"></canvas>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black bg-opacity-60 backdrop-blur z-50 p-4 glass">
+    <div class="container mx-auto flex items-center justify-between">
+      <div class="text-2xl text-[#00d8ff] glow">GuardTheWeb</div>
+      <ul class="hidden md:flex space-x-8 text-sm text-gray-200">
+        <li><a href="#features" class="hover:text-[#ff3fa5]">Features</a></li>
+        <li><a href="#pricing" class="hover:text-[#ff3fa5]">Pricing</a></li>
+        <li><a href="#contact" class="hover:text-[#ff3fa5]">Contact</a></li>
+      </ul>
+      <button id="nav-toggle" class="md:hidden text-gray-200 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <ul id="nav-menu" class="hidden md:hidden text-gray-200 px-4 py-2 space-y-2">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="h-screen flex items-center justify-center text-center px-4">
+    <div class="glass p-8 rounded-xl max-w-lg mx-auto" data-aos="fade-up">
+      <h1 class="text-5xl md:text-6xl text-[#00d8ff] glow mb-4">GuardTheWeb</h1>
+      <div class="typewriter text-lg md:text-2xl text-gray-200 mb-6" id="typewriter"><span class="text"></span></div>
+      <a href="#features" class="px-6 py-3 border-2 border-[#ff3fa5] text-[#ff3fa5] rounded hover:bg-[#ff3fa5] hover:text-black transition">Explore Features</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <h2 class="text-3xl text-center text-[#00d8ff] glow mb-12" data-aos="fade-up">Core Features</h2>
+    <div class="container mx-auto grid gap-8 md:grid-cols-3 px-4">
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">Port & Service Scan</h3>
+        <p>Fast Nmap scan to spot open ports & unexpected services.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="150">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">Tech Fingerprint</h3>
+        <p>WhatWeb parsing to reveal CMS, frameworks & server tech.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">Security Headers</h3>
+        <p>Audit and recommend CSP, HSTS, X-Frame-Options & more.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">Exposed Paths</h3>
+        <p>Multithreaded fuzzing with deep wordlist to catch leaks.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="150">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">Webscan (Nikto)</h3>
+        <p>Server misconfig checks and banner analysis.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">SSL/TLS Audit</h3>
+        <p>sslscan summary: protocols, ciphers, cert health & expiry.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">GitHub Scan</h3>
+        <p>Detect leaked keys, .env files & risky commits.</p>
+      </div>
+      <div class="glass p-6 rounded-lg" data-aos="zoom-in" data-aos-delay="150">
+        <h3 class="text-xl text-[#ff3fa5] mb-2">CVE Lookup</h3>
+        <p>Map outdated tech versions to top CVEs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-20 bg-gray-900">
+    <h2 class="text-3xl text-center text-[#00d8ff] glow mb-12" data-aos="fade-up">Pricing Plans</h2>
+    <div class="container mx-auto grid gap-8 md:grid-cols-3 px-4">
+      <!-- Starter -->
+      <div class="glass p-6 rounded-lg flex flex-col" data-aos="fade-up">
+        <h3 class="text-2xl text-[#ff3fa5] mb-4">Starter</h3>
+        <div class="text-4xl text-[#00d8ff] mb-4">£100</div>
+        <ul class="flex-1 space-y-2 mb-6 text-gray-300">
+          <li>Basic port & header scan</li>
+          <li>Exposed paths audit</li>
+          <li>PDF summary</li>
+        </ul>
+        <a href="#contact" class="mt-auto px-4 py-2 border-2 border-[#00d8ff] text-[#00d8ff] rounded hover:bg-[#00d8ff] hover:text-black text-center">Select</a>
+      </div>
+      <!-- Pro -->
+      <div class="glass p-6 rounded-lg flex flex-col" data-aos="fade-up" data-aos-delay="150">
+        <h3 class="text-2xl text-[#ff3fa5] mb-4">Pro</h3>
+        <div class="text-4xl text-[#00d8ff] mb-4">£200</div>
+        <ul class="flex-1 space-y-2 mb-6 text-gray-300">
+          <li>All Starter features</li>
+          <li>Nikto & SSL audit</li>
+          <li>2 CVE lookups</li>
+        </ul>
+        <a href="#contact" class="mt-auto px-4 py-2 border-2 border-[#00d8ff] text-[#00d8ff] rounded hover:bg-[#00d8ff] hover:text-black text-center">Select</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="glass p-6 rounded-lg flex flex-col" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-2xl text-[#ff3fa5] mb-4">Enterprise</h3>
+        <div class="text-4xl text-[#00d8ff] mb-4">£350</div>
+        <ul class="flex-1 space-y-2 mb-6 text-gray-300">
+          <li>All Pro features</li>
+          <li>GitHub repo deep scan</li>
+          <li>Monthly health checks</li>
+        </ul>
+        <a href="#contact" class="mt-auto px-4 py-2 border-2 border-[#00d8ff] text-[#00d8ff] rounded hover:bg-[#00d8ff] hover:text-black text-center">Select</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20">
+    <h2 class="text-3xl text-center text-[#00d8ff] glow mb-8" data-aos="fade-up">Get In Touch</h2>
+    <div class="container mx-auto max-w-md" data-aos="fade-up">
+      <form id="contact-form" class="space-y-4">
+        <input type="text" placeholder="Your Name" required class="w-full p-3 rounded bg-transparent border border-[#00d8ff] text-gray-200" />
+        <input type="email" placeholder="Your Email" required class="w-full p-3 rounded bg-transparent border border-[#00d8ff] text-gray-200" />
+        <textarea placeholder="Your Message" rows="4" required class="w-full p-3 rounded bg-transparent border border-[#00d8ff] text-gray-200"></textarea>
+        <button type="submit" class="w-full bg-[#ff3fa5] hover:bg-opacity-90 text-black font-bold py-3 rounded transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-black bg-opacity-70 text-center text-gray-400">
+    &copy; 2025 GuardTheWeb. All rights reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS init
+    AOS.init({ duration: 700, once: true });
+    // Mobile Nav Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    navToggle.addEventListener('click', () => navMenu.classList.toggle('hidden'));
+    // Typewriter Effect
+    const phrases = ["Rapid Site Audits","Actionable PDF Reports","Continuous Health Checks"];
+    let idx=0,charIdx=0;
+    const textEl = document.querySelector('.typewriter .text');
+    function type() {
+      if(charIdx <= phrases[idx].length) {
+        textEl.textContent = phrases[idx].substring(0,charIdx++);
+        setTimeout(type,100);
+      } else setTimeout(erase,2000);
+    }
+    function erase() {
+      if(charIdx >= 0) {
+        textEl.textContent = phrases[idx].substring(0,charIdx--);
+        setTimeout(erase,50);
+      } else {
+        idx = (idx+1)%phrases.length; charIdx=0;
+        setTimeout(type,500);
+      }
+    }
+    setTimeout(type,500);
+    // Contact Form Dummy Submit
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert("Thanks! We'll be in touch soon.");
+      e.target.reset();
+    });
+    // Matrix Canvas
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    const cols = Math.floor(canvas.width/18) + 1;
+    const drops = Array(cols).fill(1);
+    function draw() {
+      ctx.fillStyle = 'rgba(0,0,0,0.06)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      drops.forEach((y,i) => {
+        ctx.fillStyle = Math.random() > 0.7 ? '#ff3fa5' : '#00d8ff';
+        ctx.font = '18px Share Tech Mono';
+        const txt = String.fromCharCode(0x30A0 + Math.random()*96);
+        ctx.fillText(txt, i*18, y*18);
+        if(y*18 > canvas.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+      });
+    }
+    setInterval(draw,50);
+  </script>
+</body>
+</html>
